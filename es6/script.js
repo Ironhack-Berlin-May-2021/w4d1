@@ -103,9 +103,9 @@ function display({ first, middle, last }) {
 console.log(display(userX));
 
 // Array destructuring
-const numbers = ['one', 'two', 'three', 'four'];
-const [first, , , third] = numbers
-console.log(first, third);
+// const numbers = ['one', 'two', 'three', 'four'];
+// const [first, , , third] = numbers
+// console.log(first, third);
 
 // setting a default value
 const [, , thirdVal = 5, fourth] = [1, 3, 4]
@@ -146,6 +146,9 @@ function sum(...numbers) {
 console.log(sum(2, 3, 5, 7))
 // Objects
 
+console.clear();
+
+// Exercise
 const car = {
 	make: 'Volvo',
 	year: 1995,
@@ -154,17 +157,13 @@ const car = {
 		hp: 80
 	}
 }
-
-
-// Exercise
-
 // extract the make and year from the car in one line
-
+const { make, year } = car;
 console.log(make, year)
 
 // extract the fuel and hp from the car in one line
-
-
+const { engine: { fuel, hp } } = car;
+// const { fuel, hp  } = car.engine;
 console.log(fuel, hp);
 
 
@@ -173,11 +172,11 @@ console.log(fuel, hp);
 const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 // Extract the first two values
-
+const [zero, one] = numbers;
 console.log(zero, one); // 0 1
 
 // Extract all the values but the first one from the array
-
+const [, ...greaterThan0] = numbers;
 console.log(greaterThan0); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 
 
@@ -186,6 +185,36 @@ console.log(greaterThan0); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 const str = "Hello World!"
 
 // Using the spread, return an array of all characters in `str` upperCased and reversed
+const reversedUppercase = [...str.toUpperCase()].reverse();
 
 console.log(reversedUppercase); // [ '!', 'D', 'L', 'R', 'O', 'W', ' ', 'O', 'L', 'L', 'E', 'H' ]
 console.log('hello');
+
+console.clear();
+
+// arrow functions
+
+// const calcSum = function (a, b) {
+// 	return a + b;
+// }
+
+const calcSum = (a, b) => {
+	const result = a + b;
+	return result;
+}
+
+const greet = () => 'hello'
+
+const myMessage = greet()
+console.log(myMessage);
+
+const numsArr = [1, 2, 3, 4, 5, 6, 7];
+
+
+// const evens = numsArr.filter(function (num) {
+// 	return num % 2 === 0
+// })
+
+// turn the above into an arrow function
+const evens = numsArr.filter(num => num % 2 === 0)
+console.log(evens)
