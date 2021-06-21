@@ -218,3 +218,75 @@ const numsArr = [1, 2, 3, 4, 5, 6, 7];
 // turn the above into an arrow function
 const evens = numsArr.filter(num => num % 2 === 0)
 console.log(evens)
+
+
+// this is a function that returns a promise - we will not write functions
+// like this in the bootcamp but we will use them
+function createRandomNumber(min, max) {
+	return new Promise((resolve, reject) => {
+		if (arguments.length !== 2) {
+			return reject(new Error('Invalid number of arguments'));
+		}
+		setTimeout(() => {
+			resolve(Math.floor(Math.random() * (max - min + 1) + min))
+		}, 3000);
+	});
+}
+
+
+
+
+
+console.clear();
+
+
+// arrow functions and this
+
+class Person {
+	constructor() {
+		this.age = 0;
+	}
+	growUp() {
+		// const that = this;
+		// setInterval(function () {
+		// 	that.age++;
+		// 	console.log(that.age);
+		// }, 1000)
+		setInterval(() => {
+			this.age++;
+			console.log(this.age);
+		}, 1000)
+	}
+}
+
+const p = new Person();
+// p.growUp();
+
+
+
+// Promises - an object representing the eventual completion or 
+// failure of an asynchronous operation
+
+// const randomNumber = createRandomNumber(1, 5);
+// console.log(randomNumber);
+
+// the syntax to handle a promise is called .then()
+// createRandomNumber(1)
+// 	.then(function (number) {
+// 		console.log(number)
+// 	})
+// 	.catch(function (error) {
+// 		console.log(error);
+// 	})
+
+// async await
+async function getNumber() {
+	// try catch
+	try {
+		const randomNumber = await createRandomNumber(3, 5);
+		console.log(randomNumber);
+	} catch (err) {
+		console.log(err);
+	}
+};
+getNumber();
